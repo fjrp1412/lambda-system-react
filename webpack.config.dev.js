@@ -79,7 +79,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 3005,
+    port: 3006,
     open: true,
     historyApiFallback: true,
   },

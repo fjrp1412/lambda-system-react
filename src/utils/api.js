@@ -4,13 +4,11 @@ const getSales = async () => {
   try {
     const request = await fetch(url);
     const data = await request.json();
-    return data;
-
+    return { data, request };
   } catch (e) {
     console.log(e);
-    return e;
+    return {e};
   }
-
 };
 
 export { getSales };
