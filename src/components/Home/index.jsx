@@ -24,7 +24,7 @@ const HomeUI = styled.div`
     justify-content: space-around;
   }
 
-  &  .chart-container {
+  & .chart-container {
     width: 100%;
     height: 500px;
   }
@@ -45,15 +45,23 @@ function Home() {
         </div>
         <Stats />
 
-        <div className="chart-container">
-          <Chart />
-        </div>
-        <div className="chart-container">
-          <Chart />
-        </div>
-        <div className="chart-container">
-          <Chart />
-        </div>
+        <Section>
+          <div className="chart-container">
+            <Chart />
+          </div>
+        </Section>
+
+        <Section>
+          <div className="chart-container">
+            <Chart />
+          </div>
+        </Section>
+
+        <Section>
+          <div className="chart-container">
+            <Chart />
+          </div>
+        </Section>
       </HomeUI>
     </Section>
   );
