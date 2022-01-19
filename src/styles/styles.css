@@ -23,3 +23,7 @@ html {
   color: var(--primary-font-color);
 }
 
+
+a {
+  text-decoration: none;
+}

@@ -5,7 +5,7 @@ import { Section } from '../../components/Section';
 const StatsUI = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const Stat = styled.div`
@@ -13,6 +13,7 @@ const Stat = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: 10px 0px;
 
   & .primary-text {
     font-size: 2.6rem;
@@ -25,21 +26,25 @@ const Stat = styled.div`
   }
 `;
 
-function Stats() {
+function Stats({
+  firstStat = { name: 'Ventas Totales', value: 69 },
+  secondStat = { name: 'Productos Vendidos', value: 420 },
+  thirdStat = { name: 'Porcentaje de ventas', value: '13%' },
+}) {
   return (
-    <Section>
+    <Section wide>
       <StatsUI>
         <Stat>
-          <span className="secondary-text">Ventas Totales</span>
-          <span className="primary-text">69</span>
+          <span className="secondary-text">{firstStat.name}</span>
+          <span className="primary-text">{firstStat.value}</span>
         </Stat>
         <Stat>
-          <span className="secondary-text">Productos Vendidos</span>
-          <span className="primary-text">420</span>
+          <span className="secondary-text">{secondStat.name}</span>
+          <span className="primary-text">{secondStat.value}</span>
         </Stat>
         <Stat>
-          <span className="secondary-text">Porcentaje de ventas</span>
-          <span className="primary-text">13%</span>
+          <span className="secondary-text">{thirdStat.name}</span>
+          <span className="primary-text">{thirdStat.value}</span>
         </Stat>
       </StatsUI>
     </Section>
