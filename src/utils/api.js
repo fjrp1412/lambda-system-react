@@ -7,11 +7,11 @@ const getSales = async () => {
     return { data, request };
   } catch (e) {
     console.log(e);
-    return {e};
+    return { e };
   }
 };
 
-const getProductList = async() => {
+const getProductList = async () => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/product/';
 
   try {
@@ -20,9 +20,21 @@ const getProductList = async() => {
     return { data, request };
   } catch (e) {
     console.log(e);
-    return {e};
+    return { e };
   }
+};
 
-}
+const getClientsList = async () => {
+  const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
+  try {
+    const request = await fetch(url);
+    const data = await request.json();
+    console.log(data);
+    return { data, request };
+  } catch (e) {
+    console.log(e);
+    return { e };
+  }
+};
 
-export { getSales, getProductList };
+export { getSales, getProductList, getClientsList };
