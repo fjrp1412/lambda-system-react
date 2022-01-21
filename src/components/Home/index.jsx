@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Section } from '../Section';
 import { Stats } from '../../containers/Stats';
 import { Chart } from '../../containers/Charts/AreaChart';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const HomeUI = styled.div`
   width: 100%;
