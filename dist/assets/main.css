@@ -4,8 +4,8 @@
 :root {
   --dark-bg: #262626;
   --black: #000;
-  --primary-font-color: #FFF;
-  --secondary-font-color: #DEDEDE;
+  --primary-font-color: #fff;
+  --secondary-font-color: #dedede;
 }
 
 * {
@@ -14,18 +14,16 @@
   padding: 0;
 }
 
-
 html {
   display: flex;
   flex-direction: column;
   justify-items: center;
   font-size: 62.5%;
-  font-family: "Open Sans", "Helvetica Neue";
+  font-family: 'Open Sans', 'Helvetica Neue';
   width: 100%;
   background-color: var(--dark-bg);
   color: var(--primary-font-color);
 }
-
 
 a {
   text-decoration: none;

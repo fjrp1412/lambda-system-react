@@ -12,18 +12,22 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
     publicPath: '/',
+    clean: true,
   },
 
   mode: 'production',
 
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      '@mui/styled-engine': '@mui/styled-engine-sc',
+    },
   },
 
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -41,17 +45,17 @@ module.exports = {
 
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader',
-        ],
+        use: ['style-loader', 'css-loader'],
       },
 
       {
-        test: /\.png|.jpg?e|.svg/,
+        test: /\.(png|jpg?e|svg|gif|eot|ttf|woff|woff2)$/i,
         type: 'asset/resource',
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },

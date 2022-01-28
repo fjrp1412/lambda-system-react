@@ -49,4 +49,34 @@ const getSaleDetail = async ({ id }) => {
   }
 };
 
-export { getSales, getProductList, getClientsList, getSaleDetail };
+const createClient = async form => {
+  const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
+  const formData = new FormData(form);
+  console.log(form);
+  console.log(Object.fromEntries(formData.entries()));
+  const requestOptions = {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    body: formData,
+  };
+
+  try {
+    const request = await fetch(url, requestOptions);
+    const data = await request.json();
+    return { data, request };
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
+};
+
+export {
+  getSales,
+  getProductList,
+  getClientsList,
+  getSaleDetail,
+  createClient,
+};
