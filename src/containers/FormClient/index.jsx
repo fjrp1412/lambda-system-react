@@ -6,8 +6,6 @@ function FormClient() {
   const handleSubmit = async () => {
     const form = document.getElementById('form');
     const { data, request } = await createClient(form);
-    console.log(data);
-    console.log(request);
   };
   return (
     <Form

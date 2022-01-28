@@ -52,14 +52,8 @@ const getSaleDetail = async ({ id }) => {
 const createClient = async form => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
   const formData = new FormData(form);
-  console.log(form);
-  console.log(Object.fromEntries(formData.entries()));
   const requestOptions = {
     method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
     body: formData,
   };
 
