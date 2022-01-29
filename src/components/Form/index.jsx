@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TextField, Button, Input } from '@mui/material';
+import { TextField, Button, Input, MenuItem, Select } from '@mui/material';
 import { Section } from '../Section';
 
 const FormUI = styled.form`
@@ -30,28 +30,51 @@ const FormUI = styled.form`
 `;
 
 function Form({ title, fields, handleSubmit }) {
-  console.log(fields);
   return (
     <Section>
       <FormUI id="form" action="" encType="multipart/form-data">
         <h1 className="title">{title}</h1>
 
         {fields.map(field => {
-          if (field === 'image') {
+          if (field.fieldName === 'image') {
             return (
-              <Input name={field} type="file" className="image" key={field}>
+              <Input
+                name={field.fieldName}
+                type="file"
+                className="image"
+                key={field}
+              >
                 Hola
               </Input>
             );
           }
+
+          if (field.type === 'select') {
+            return (
+              <Select
+                labelId="select-id"
+                value={field.state}
+                onChange={event => {
+                  field.setState(event.target.value);
+                }}
+                key={field.fieldName}
+              >
+                {field.list.map(client => (
+                  <MenuItem value={client.id} key={client.id}>
+                    {client.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            );
+          }
           return (
             <TextField
-              label={field}
+              label={field.fieldName}
               variant="outlined"
               margin="dense"
-              key={field}
+              key={field.fieldName}
               className="input"
-              name={field}
+              name={field.fieldName}
             />
           );
         })}

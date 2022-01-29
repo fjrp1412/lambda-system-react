@@ -7,6 +7,7 @@ import { Products } from '../../containers/Products';
 import { Clients } from '../../containers/Clients';
 import { SaleDetail } from '../../containers/SaleDetail';
 import { FormClient } from '../../containers/FormClient';
+import { FormSale } from '../../containers/FormSale';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/sales" element={<Sales />} />
+        <Route exact path="/sales/create" element={<FormSale />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/clients" element={<Clients />} />
         <Route path="/clients/create" element={<FormClient />} />

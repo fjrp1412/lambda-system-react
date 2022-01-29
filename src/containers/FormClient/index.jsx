@@ -10,7 +10,14 @@ function FormClient() {
   return (
     <Form
       title="Registro de cliente"
-      fields={['name', 'email', 'identity_card', 'address', 'phone', 'image']}
+      fields={[
+        { fieldName: 'name', type: 'text' },
+        { fieldName: 'email', type: 'text' },
+        { fieldName: 'identity_card', type: 'text' },
+        { fieldName: 'address', type: 'text' },
+        { fieldName: 'phone', type: 'text' },
+        { fieldName: 'image', type: 'text' },
+      ]}
       handleSubmit={handleSubmit}
     />
   );
