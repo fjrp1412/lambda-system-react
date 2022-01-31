@@ -1,4 +1,2 @@
-export { Table } from './Table';
-export { TableBody } from './TableBody';
-export { TableHead } from './TableHead';
-export { TableItem } from './TableItem';
+export { ProductsTable } from './ProductsTable';
+export { ClientsTable } from './ClientsTable';

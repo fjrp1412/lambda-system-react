@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Form } from '../../components/Form';
 import { Section } from '../../components/Section';
 import { Stats } from '../Stats';
-import { Form } from '../../components/Form';
 import { getClientsList } from '../../utils/api';
+import { ProductsTable } from '../../components/TableComponents';
 
 function FormSale() {
   const [client, setClient] = useState('');
   const [listClients, setListClients] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(async () => {
     const { data } = await getClientsList();
@@ -33,6 +35,19 @@ function FormSale() {
 
           { fieldName: 'Vendedor', type: 'text' },
         ]}
+      />
+      <ProductsTable
+        head={['Nombre', 'Precio', 'Tax', 'Cantidad', 'Eliminar', 'Editar']}
+        body={[
+          {
+            name: 'Jabon',
+            price: '69',
+            tax: '5.5',
+            und: '4',
+            id: 1,
+          },
+        ]}
+        editable
       />
     </Section>
   );

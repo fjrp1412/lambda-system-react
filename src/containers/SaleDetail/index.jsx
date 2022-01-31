@@ -4,12 +4,7 @@ import { getSaleDetail } from '../../utils/api';
 import { Stats } from '../Stats';
 import { DetailHeader } from '../../components/DetailComponents';
 import { Section } from '../../components/Section';
-import {
-  Table,
-  TableItem,
-  TableBody,
-  TableHead,
-} from '../../components/TableComponents';
+import { ProductsTable } from '../../components/TableComponents';
 
 function SaleDetail() {
   const urlParams = useParams();
@@ -24,13 +19,12 @@ function SaleDetail() {
     setSale(data);
   }, []);
 
-  console.log(sale);
   return (
     <Section wide>
       <DetailHeader>
         <img
           src={sale.client.image || '../../assets/images/default-user.png'}
-          alt="client image"
+          alt={sale.client.name}
           className="image"
         />
 
@@ -44,30 +38,10 @@ function SaleDetail() {
         thirdStat={{ name: 'ID', value: sale.id }}
       />
 
-      <Table>
-        <TableHead>
-          <tr>
-            <th>
-              <button type="button">Nombre</button>
-            </th>
-            <th>
-              <button type="button">Cateogria</button>
-            </th>
-            <th>
-              <button type="button">Monto</button>
-            </th>
-          </tr>
-        </TableHead>
-        <TableBody>
-          {sale.product.map(product => (
-            <TableItem key={product.id}>
-              <td>{product.name}</td>
-              <td>{product.category.name}</td>
-              <td>{product.price_1_currency}</td>
-            </TableItem>
-          ))}
-        </TableBody>
-      </Table>
+      <ProductsTable
+        head={['Nombre', 'Precio', 'Tax', 'Cantidad']}
+        body={sale.product}
+      />
     </Section>
   );
 }
