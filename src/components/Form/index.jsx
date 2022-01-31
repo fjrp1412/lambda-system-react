@@ -29,7 +29,7 @@ const FormUI = styled.form`
   }
 `;
 
-function Form({ title, fields, handleSubmit }) {
+function Form({ title, fields, handleSubmit, handleCancel }) {
   return (
     <Section>
       <FormUI id="form" action="" encType="multipart/form-data">
@@ -87,7 +87,12 @@ function Form({ title, fields, handleSubmit }) {
           >
             Submit
           </Button>
-          <Button className="button" color="error" variant="contained">
+          <Button
+            className="button"
+            color="error"
+            variant="contained"
+            onClick={handleCancel}
+          >
             Volver
           </Button>
         </div>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  width: ${props => props.wide ? '100%' : 'auto'};
+  width: 100%;
   align-items: center;
   font-size: 1.6rem;
   justify-content: center;
@@ -14,6 +14,3 @@ const Section = styled.section`
 `;
 
 export { Section };
-
-
-

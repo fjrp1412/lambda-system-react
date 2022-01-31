@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [value, setValue] = useState({});
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(async () => {
     setSales(await getSales());
@@ -27,8 +28,10 @@ function AppProvider({ children }) {
       setClients,
       loading,
       setLoading,
+      openModal,
+      setOpenModal,
     });
-  }, [sales, products, clients, loading]);
+  }, [sales, products, clients, loading, openModal]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
