@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Section } from '../../components/Section';
 import { ClientsTable } from '../../components/TableComponents';
-import { getClientsList } from '../../utils/api';
+import { AppContext } from '../../context';
 
 function Clients() {
-  const [clients, setClients] = useState([]);
+  const { clients, loading } = useContext(AppContext);
 
-  useEffect(async () => {
-    const { data } = await getClientsList();
-    setClients(data.results);
-  }, []);
   return (
     <Section>
-      <ClientsTable clients={clients} editable />
+      {!loading && <ClientsTable clients={clients.results} editable />}
     </Section>
   );
 }

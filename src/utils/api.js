@@ -4,10 +4,10 @@ const getSales = async () => {
   try {
     const request = await fetch(url);
     const data = await request.json();
-    return { data, request };
+    return data;
   } catch (e) {
     console.log(e);
-    return { e };
+    return e;
   }
 };
 
@@ -17,7 +17,7 @@ const getProductList = async () => {
   try {
     const request = await fetch(url);
     const data = await request.json();
-    return { data, request };
+    return data;
   } catch (e) {
     console.log(e);
     return { e };
@@ -29,7 +29,7 @@ const getClientsList = async () => {
   try {
     const request = await fetch(url);
     const data = await request.json();
-    return { data, request };
+    return data;
   } catch (e) {
     console.log(e);
     return { e };

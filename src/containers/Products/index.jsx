@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Section } from '../../components/Section';
 import { ProductsTable } from '../../components/TableComponents';
-import { getProductList } from '../../utils/api';
+import { AppContext } from '../../context';
 
 function Products() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(async () => {
-    const { data, request } = await getProductList();
-    setProducts(data.results);
-  }, []);
-
-  console.log(products);
+  const { products, loading } = useContext(AppContext);
 
   return (
     <Section>
-      <ProductsTable
-        head={['Nombre', 'Precio', 'Tax', 'presentation', 'Eliminar', 'Editar']}
-        editable
-        body={products}
-      />
+      {!loading && (
+        <ProductsTable
+          head={[
+            'Nombre',
+            'Precio',
+            'Tax',
+            'presentation',
+            'Eliminar',
+            'Editar',
+          ]}
+          editable
+          body={products.results}
+        />
+      )}
     </Section>
   );
 }
