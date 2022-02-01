@@ -29,55 +29,57 @@ const FormUI = styled.form`
   }
 `;
 
-function Form({ title, fields, handleSubmit, handleCancel }) {
+function Form({ title, fields, handleSubmit, handleCancel, children }) {
   return (
     <Section>
       <FormUI id="form" action="" encType="multipart/form-data">
         <h1 className="title">{title}</h1>
 
-        {fields.map(field => {
-          if (field.fieldName === 'image') {
-            return (
-              <Input
-                name={field.fieldName}
-                type="file"
-                className="image"
-                key={field}
-              >
-                Hola
-              </Input>
-            );
-          }
+        {children ||
+          fields.map(field => {
+            if (field.fieldName === 'image') {
+              return (
+                <Input
+                  name={field.fieldName}
+                  type="file"
+                  className="image"
+                  key={field}
+                >
+                  Hola
+                </Input>
+              );
+            }
 
-          if (field.type === 'select') {
+            if (field.type === 'select') {
+              return (
+                <Select
+                  labelId="select-id"
+                  value={field.state}
+                  onChange={event => {
+                    field.setState(event.target.value);
+                  }}
+                  key={field.fieldName}
+                >
+                  {field.list.map(client => (
+                    <MenuItem value={client.id} key={client.id}>
+                      {client.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              );
+            }
+
             return (
-              <Select
-                labelId="select-id"
-                value={field.state}
-                onChange={event => {
-                  field.setState(event.target.value);
-                }}
+              <TextField
+                label={field.fieldName}
+                variant="outlined"
+                margin="dense"
                 key={field.fieldName}
-              >
-                {field.list.map(client => (
-                  <MenuItem value={client.id} key={client.id}>
-                    {client.name}
-                  </MenuItem>
-                ))}
-              </Select>
+                className="input"
+                name={field.fieldName}
+              />
             );
-          }
-          return (
-            <TextField
-              label={field.fieldName}
-              variant="outlined"
-              margin="dense"
-              key={field.fieldName}
-              className="input"
-              name={field.fieldName}
-            />
-          );
-        })}
+          })}
         <div className="button-container">
           <Button
             className="button"

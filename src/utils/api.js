@@ -36,6 +36,18 @@ const getClientsList = async () => {
   }
 };
 
+const getSalesmanList = async () => {
+  const url = 'https://lambda-sales-system-api.herokuapp.com/api/salesman/';
+  try {
+    const request = await fetch(url);
+    const data = await request.json();
+    return data;
+  } catch (e) {
+    console.log(e);
+    return { e };
+  }
+};
+
 const getSaleDetail = async ({ id }) => {
   const url = `https://lambda-sales-system-api.herokuapp.com/api/sale/${id}/`;
 
@@ -73,4 +85,5 @@ export {
   getClientsList,
   getSaleDetail,
   createClient,
+  getSalesmanList,
 };
