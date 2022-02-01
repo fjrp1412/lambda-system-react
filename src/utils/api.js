@@ -79,6 +79,35 @@ const createClient = async form => {
   }
 };
 
+const createSale = async (sale, products) => {
+  const productsUrl =
+    'https://lambda-sales-system-api.herokuapp.com/api/sale/product-sale';
+  const saleUrl = 'https://lambda-sales-system-api.herokuapp.com/api/sale/';
+
+  try {
+    const requestSale = await fetch(saleUrl, {
+      method: 'POST',
+      body: JSON.stringify(sale),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const requestProducts = await fetch(productsUrl, {
+      method: 'POST',
+      body: JSON.stringify(products),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return requestProducts;
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
+};
+
 export {
   getSales,
   getProductList,
@@ -86,4 +115,5 @@ export {
   getSaleDetail,
   createClient,
   getSalesmanList,
+  createSale,
 };

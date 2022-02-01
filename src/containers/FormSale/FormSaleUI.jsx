@@ -21,6 +21,7 @@ function FormSaleUI({
   handleDeleteProduct,
   sale,
   setSale,
+  handleSubmitForm,
 }) {
   return (
     <Section>
@@ -31,7 +32,7 @@ function FormSaleUI({
             secondStat={{ name: 'Nro de productos', value: 420 }}
             thirdStat={{ name: 'Nro de factura', value: 1 }}
           />
-          <Form title="Registro de venta">
+          <Form title="Registro de venta" handleSubmit={handleSubmitForm}>
             <Select
               labelId="select-id"
               value={sale.salesman}
@@ -90,7 +91,7 @@ function FormSaleUI({
                   value={newProduct.id}
                   onChange={event => {
                     setNewProduct({
-                      ...products.results[event.target.value],
+                      ...products.results[event.target.value - 1],
                       quantity: newProduct.quantity,
                     });
                   }}
