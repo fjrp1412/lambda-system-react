@@ -54,7 +54,7 @@ const data = [
   },
 ];
 
-function Chart() {
+function BasicAreaChart() {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart
@@ -77,4 +77,4 @@ function Chart() {
   );
 }
 
-export { Chart };
+export { BasicAreaChart };

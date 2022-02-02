@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSaleDetail } from '../../utils/api';
 import { Stats } from '../Stats';
-import { DetailHeader } from '../../components/DetailComponents';
-import { Section } from '../../components/Section';
-import { ProductsTable } from '../../components/TableComponents';
+import { DetailHeader, Section, ProductsTable } from '../../components';
 
 function SaleDetail() {
   const urlParams = useParams();

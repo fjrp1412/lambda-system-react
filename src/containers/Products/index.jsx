@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { Section } from '../../components/Section';
-import { ProductsTable } from '../../components/TableComponents';
+import { Section, ProductsTable } from '../../components';
 import { AppContext } from '../../context';
 
 function Products() {

@@ -1,33 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { TextField, Button, Input, MenuItem, Select } from '@mui/material';
+import { TextField, Button, Input } from '@mui/material';
 import { Section } from '../Section';
-
-const FormUI = styled.form`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-
-  & .title {
-    font-size: 1.8rem;
-    margin: 10px 0px;
-  }
-
-  & .input:last-child {
-    margin-bottom: 10px;
-  }
-
-  & .button {
-    margin: 10px 5px;
-  }
-
-  & .image {
-    width: 100%;
-    height: 150px;
-    background-color: white;
-  }
-`;
+import { FormUI } from './FormUI';
 
 function Form({ title, fields, handleSubmit, handleCancel, children }) {
   return (
@@ -37,6 +11,7 @@ function Form({ title, fields, handleSubmit, handleCancel, children }) {
 
         {children ||
           fields.map(field => {
+
             if (field.fieldName === 'image') {
               return (
                 <Input
@@ -47,25 +22,6 @@ function Form({ title, fields, handleSubmit, handleCancel, children }) {
                 >
                   Hola
                 </Input>
-              );
-            }
-
-            if (field.type === 'select') {
-              return (
-                <Select
-                  labelId="select-id"
-                  value={field.state}
-                  onChange={event => {
-                    field.setState(event.target.value);
-                  }}
-                  key={field.fieldName}
-                >
-                  {field.list.map(client => (
-                    <MenuItem value={client.id} key={client.id}>
-                      {client.name}
-                    </MenuItem>
-                  ))}
-                </Select>
               );
             }
 

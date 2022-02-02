@@ -2,12 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from '../Header';
 import { Home } from '../Home';
-import { Sales } from '../../containers/Sales';
-import { Products } from '../../containers/Products';
-import { Clients } from '../../containers/Clients';
-import { SaleDetail } from '../../containers/SaleDetail';
-import { FormClient } from '../../containers/FormClient';
-import { FormSale } from '../../containers/FormSale';
+import {
+  Sales,
+  Products,
+  Clients,
+  SaleDetail,
+  FormClient,
+  FormSale,
+} from '../../containers';
 import { AppProvider } from '../../context';
 
 function App() {

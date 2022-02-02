@@ -1,36 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Section } from '../Section';
-import { Stats } from '../../containers/Stats';
-import { Chart } from '../../containers/Charts/AreaChart';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-
-const HomeUI = styled.div`
-  width: 100%;
-
-  & div {
-    margin: 5px 0px;
-  }
-
-  & .content {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-  }
-
-  & .content .dates {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  & .chart-container {
-    width: 100%;
-    height: 500px;
-  }
-`;
+import { Stats, BasicAreaChart } from '../../containers';
+import { HomeUI } from './HomeUI';
 
 function Home() {
   return (
@@ -49,19 +20,19 @@ function Home() {
 
         <Section>
           <div className="chart-container">
-            <Chart />
+            <BasicAreaChart />
           </div>
         </Section>
 
         <Section>
           <div className="chart-container">
-            <Chart />
+            <BasicAreaChart />
           </div>
         </Section>
 
         <Section>
           <div className="chart-container">
-            <Chart />
+            <BasicAreaChart />
           </div>
         </Section>
       </HomeUI>

@@ -1,11 +1,8 @@
 import React from 'react';
 import { Add } from '@mui/icons-material';
 import { IconButton, MenuItem, Select } from '@mui/material';
-import { Form } from '../../components/Form';
-import { Section } from '../../components/Section';
+import { Form, Section, ProductsTable, Modal } from '../../components';
 import { Stats } from '../Stats';
-import { ProductsTable } from '../../components/TableComponents';
-import { Modal } from '../../components/Modal';
 
 function FormSaleUI({
   salesmans,

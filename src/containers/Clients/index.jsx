@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { Section } from '../../components/Section';
-import { ClientsTable } from '../../components/TableComponents';
+import { Section, ClientsTable } from '../../components';
 import { AppContext } from '../../context';
 
 function Clients() {

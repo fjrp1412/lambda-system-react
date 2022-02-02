@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Stats } from '../Stats';
-import { SalesCard } from '../../components/SaleCard';
-import { Section } from '../../components/Section';
+import { SalesCard, Section } from '../../components';
 import { AppContext } from '../../context';
 
 function Sales() {
