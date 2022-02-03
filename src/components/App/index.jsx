@@ -10,12 +10,14 @@ import {
   FormClient,
   FormSale,
 } from '../../containers';
+import { NavBar } from '../Nav';
 import { AppProvider } from '../../context';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <NavBar />
       <AppProvider>
         <Routes>
           <Route exact path="/" element={<Home />} />

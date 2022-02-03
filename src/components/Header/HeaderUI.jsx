@@ -8,6 +8,7 @@ const HeaderUI = styled.header`
   height: 50px;
   align-items: center;
   background-color: var(--black);
+  margin-bottom: 20px;
 
   & h1 {
     font-size: 2.4rem;

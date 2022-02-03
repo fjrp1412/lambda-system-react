@@ -9,10 +9,6 @@ function Header() {
       </div>
 
       <h1>Di Cascada</h1>
-
-      <div>
-        <img src="../assets/images/default-user.png" alt="default user" />
-      </div>
     </HeaderUI>
   );
 }
