@@ -1,3 +1,49 @@
+const postLogin = async formData => {
+  const url = 'https://lambda-sales-system-api.herokuapp.com/api/user/token/';
+  const dataObject = Object.fromEntries(formData.entries());
+
+  console.log(dataObject);
+
+  const requestOptions = {
+    method: 'POST',
+    body: JSON.stringify(dataObject),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const request = await fetch(url, requestOptions);
+    const data = await request.json();
+    return { data, request };
+  } catch (e) {
+    return e;
+  }
+};
+
+const postSignUp = async formData => {
+  const url = 'https://lambda-sales-system-api.herokuapp.com/api/user/create/';
+  const dataObject = Object.fromEntries(formData.entries());
+
+  console.log(dataObject);
+
+  const requestOptions = {
+    method: 'POST',
+    body: JSON.stringify(dataObject),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const request = await fetch(url, requestOptions);
+    const data = await request.json();
+    return { data, request };
+  } catch (e) {
+    return e;
+  }
+};
+
 const getSales = async () => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/sale/';
 
@@ -94,10 +140,10 @@ const createSale = async (sale, products) => {
     });
 
     const requestProducts = await fetch(productsUrl, {
-      method: 'POST',
+      method: 'post',
       body: JSON.stringify(products),
       headers: {
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
       },
     });
 
@@ -116,4 +162,6 @@ export {
   createClient,
   getSalesmanList,
   createSale,
+  postLogin,
+  postSignUp,
 };
