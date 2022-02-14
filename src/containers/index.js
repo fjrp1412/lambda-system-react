@@ -6,3 +6,4 @@ export { Products } from './Products';
 export { SaleDetail } from './SaleDetail';
 export { Sales } from './Sales';
 export { Stats } from './Stats';
+export { Login } from './Login';

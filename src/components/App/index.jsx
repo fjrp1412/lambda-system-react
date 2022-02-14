@@ -9,6 +9,7 @@ import {
   SaleDetail,
   FormClient,
   FormSale,
+  Login,
 } from '../../containers';
 import { NavBar } from '../Nav';
 import { AppProvider } from '../../context';
@@ -21,6 +22,7 @@ function App() {
       <AppProvider>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/sales" element={<Sales />} />
           <Route exact path="/sales/create" element={<FormSale />} />
           <Route exact path="/products" element={<Products />} />
