@@ -1,4 +1,4 @@
-export { createClient, createSale, postLogin, postSignUp } from './api';
+export { createClient, createSale, postLogin, postSignUp } from './postMethods';
 
 export {
   getSales,

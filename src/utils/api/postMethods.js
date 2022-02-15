@@ -1,19 +1,19 @@
-const postLogin = async formData => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/user/token/';
-  const dataObject = Object.fromEntries(formData.entries());
+const BASE_URL = 'https://lambda-sales-system-api.herokuapp.com/api/';
 
-  console.log(dataObject);
+const postLogin = async ({ formData, token }) => {
+  const dataObject = Object.fromEntries(formData.entries());
 
   const requestOptions = {
     method: 'POST',
     body: JSON.stringify(dataObject),
     headers: {
       'Content-Type': 'application/json',
+      Authentication: `Token ${token}`,
     },
   };
 
   try {
-    const request = await fetch(url, requestOptions);
+    const request = await fetch(`${BASE_URL}user/token/`, requestOptions);
     const data = await request.json();
     return { data, request };
   } catch (e) {
@@ -21,22 +21,20 @@ const postLogin = async formData => {
   }
 };
 
-const postSignUp = async formData => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/user/create/';
+const postSignUp = async ({ formData, token }) => {
   const dataObject = Object.fromEntries(formData.entries());
-
-  console.log(dataObject);
 
   const requestOptions = {
     method: 'POST',
     body: JSON.stringify(dataObject),
     headers: {
       'Content-Type': 'application/json',
+      Authentication: `Token ${token}`,
     },
   };
 
   try {
-    const request = await fetch(url, requestOptions);
+    const request = await fetch(`${BASE_URL}user/create/`, requestOptions);
     const data = await request.json();
     return { data, request };
   } catch (e) {
@@ -44,28 +42,28 @@ const postSignUp = async formData => {
   }
 };
 
-const createClient = async form => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
+const createClient = async ({ form, token }) => {
   const formData = new FormData(form);
   const requestOptions = {
     method: 'POST',
     body: formData,
+    headers: {
+      Authentication: `Token ${token}`,
+    },
   };
 
   try {
-    const request = await fetch(url, requestOptions);
+    const request = await fetch(`${BASE_URL}client/`, requestOptions);
     const data = await request.json();
     return { data, request };
   } catch (e) {
-    console.log(e);
     return e;
   }
 };
 
-const createSale = async (sale, products) => {
-  const productsUrl =
-    'https://lambda-sales-system-api.herokuapp.com/api/sale/product-sale';
-  const saleUrl = 'https://lambda-sales-system-api.herokuapp.com/api/sale/';
+const createSale = async ({ sale, products, token }) => {
+  const productsUrl = `${BASE_URL}sale/product-sale`;
+  const saleUrl = `${BASE_URL}sale/`;
 
   try {
     const requestSale = await fetch(saleUrl, {
@@ -73,6 +71,7 @@ const createSale = async (sale, products) => {
       body: JSON.stringify(sale),
       headers: {
         'Content-Type': 'application/json',
+        Authentication: `Token ${token}`,
       },
     });
 
@@ -81,6 +80,7 @@ const createSale = async (sale, products) => {
       body: JSON.stringify(products),
       headers: {
         'content-type': 'application/json',
+        Authentication: `Token ${token}`,
       },
     });
 
