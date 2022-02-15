@@ -16,6 +16,14 @@ function Sales() {
   return (
     <Section>
       <Stats />
+      <Button
+        size="large"
+        variant="outlined"
+        color="success"
+        onClick={handleAdd}
+      >
+        Añadir venta
+      </Button>
       {!loading &&
         sales.results.map(sale => (
           <Link to={`/sales/${sale.id}`}>
@@ -28,7 +36,6 @@ function Sales() {
             />
           </Link>
         ))}
-      <Button onClick={handleAdd}>Añadir venta</Button>
     </Section>
   );
 }
