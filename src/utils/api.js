@@ -44,11 +44,15 @@ const postSignUp = async formData => {
   }
 };
 
-const getSales = async () => {
+const getSales = async token => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/sale/';
 
   try {
-    const request = await fetch(url);
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
     const data = await request.json();
     return data;
   } catch (e) {
@@ -57,11 +61,15 @@ const getSales = async () => {
   }
 };
 
-const getProductList = async () => {
+const getProductList = async token => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/product/';
 
   try {
-    const request = await fetch(url);
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
     const data = await request.json();
     return data;
   } catch (e) {
@@ -70,10 +78,14 @@ const getProductList = async () => {
   }
 };
 
-const getClientsList = async () => {
+const getClientsList = async token => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
   try {
-    const request = await fetch(url);
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
     const data = await request.json();
     return data;
   } catch (e) {
@@ -82,10 +94,14 @@ const getClientsList = async () => {
   }
 };
 
-const getSalesmanList = async () => {
+const getSalesmanList = async token => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/salesman/';
   try {
-    const request = await fetch(url);
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
     const data = await request.json();
     return data;
   } catch (e) {

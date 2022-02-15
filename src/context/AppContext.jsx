@@ -5,7 +5,7 @@ import {
   getProductList,
   getClientsList,
 } from '../utils/api';
-import { useScreenSize } from '../hooks';
+import { useScreenSize, useAuth } from '../hooks';
 
 const AppContext = createContext();
 
@@ -18,14 +18,16 @@ function AppProvider({ children }) {
   const [value, setValue] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const [size, setSize] = useScreenSize();
+  const [token, setToken] = useState();
+  const [auth, setAuth] = useAuth({ token });
 
   useEffect(async () => {
-    setSales(await getSales());
-    setProducts(await getProductList());
-    setClients(await getClientsList());
-    setSalesmans(await getSalesmanList());
+    setSales(await getSales(token));
+    setProducts(await getProductList(token));
+    setClients(await getClientsList(token));
+    setSalesmans(await getSalesmanList(token));
     setLoading(false);
-  }, []);
+  }, [token]);
 
   useMemo(() => {
     setValue({
@@ -43,8 +45,12 @@ function AppProvider({ children }) {
       setOpenModal,
       size,
       setSize,
+      token,
+      setToken,
+      auth,
+      setAuth,
     });
-  }, [sales, products, clients, loading, openModal]);
+  }, [sales, products, clients, salesmans, auth]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

@@ -1,16 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form } from '../../components';
 import { postSignUp } from '../../utils/api';
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const handleSubmit = async () => {
     const form = document.getElementById('form');
     const formData = new FormData(form);
-
     const { data, request } = await postSignUp(formData);
 
-    console.log(data);
-    console.log(request);
+    if (request.ok) {
+      navigate('/login');
+    }
   };
 
   return (
