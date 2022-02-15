@@ -66,7 +66,6 @@ const getSaleDetail = async ({ id, token }) => {
     const data = await request.json();
     return { data, request };
   } catch (e) {
-    console.log(e);
     return { e };
   }
 };

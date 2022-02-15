@@ -11,7 +11,7 @@ function Login() {
   const handleSubmit = async () => {
     const form = document.getElementById('form');
     const formData = new FormData(form);
-    const { data, request } = await postLogin(formData);
+    const { data, request } = await postLogin({ formData });
 
     if (request.ok) {
       setToken(data.token);

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form } from '../../components';
 import { createClient } from '../../utils/api';
+import { AppContext } from '../../context';
 
 function FormClient() {
+  const { token } = useContext(AppContext);
   const handleSubmit = async () => {
     const form = document.getElementById('form');
-    const { data, request } = await createClient(form);
+    const formData = new FormData(form);
+    const { data, request } = await createClient({ formData, token });
   };
   return (
     <Form

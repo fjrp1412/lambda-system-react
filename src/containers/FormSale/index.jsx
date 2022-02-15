@@ -12,6 +12,7 @@ function FormSale() {
     openModal,
     setOpenModal,
     sales,
+    token,
   } = useContext(AppContext);
 
   const [newProduct, setNewProduct] = useState({ id: 1, quantity: 1 });
@@ -61,7 +62,7 @@ function FormSale() {
       };
     });
 
-    await createSale(sale, newCart);
+    await createSale({ sale, products: newCart, token });
   };
 
   useEffect(() => {

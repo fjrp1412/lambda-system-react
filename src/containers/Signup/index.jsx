@@ -9,7 +9,7 @@ function SignUp() {
   const handleSubmit = async () => {
     const form = document.getElementById('form');
     const formData = new FormData(form);
-    const { data, request } = await postSignUp(formData);
+    const { data, request } = await postSignUp({ formData });
 
     if (request.ok) {
       navigate('/login');

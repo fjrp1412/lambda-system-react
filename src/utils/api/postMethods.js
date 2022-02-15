@@ -1,6 +1,6 @@
 const BASE_URL = 'https://lambda-sales-system-api.herokuapp.com/api/';
 
-const postLogin = async ({ formData, token }) => {
+const postLogin = async ({ formData }) => {
   const dataObject = Object.fromEntries(formData.entries());
 
   const requestOptions = {
@@ -8,7 +8,6 @@ const postLogin = async ({ formData, token }) => {
     body: JSON.stringify(dataObject),
     headers: {
       'Content-Type': 'application/json',
-      Authentication: `Token ${token}`,
     },
   };
 
@@ -21,7 +20,7 @@ const postLogin = async ({ formData, token }) => {
   }
 };
 
-const postSignUp = async ({ formData, token }) => {
+const postSignUp = async ({ formData }) => {
   const dataObject = Object.fromEntries(formData.entries());
 
   const requestOptions = {
@@ -29,7 +28,6 @@ const postSignUp = async ({ formData, token }) => {
     body: JSON.stringify(dataObject),
     headers: {
       'Content-Type': 'application/json',
-      Authentication: `Token ${token}`,
     },
   };
 
@@ -42,8 +40,7 @@ const postSignUp = async ({ formData, token }) => {
   }
 };
 
-const createClient = async ({ form, token }) => {
-  const formData = new FormData(form);
+const createClient = async ({ formData, token }) => {
   const requestOptions = {
     method: 'POST',
     body: formData,
