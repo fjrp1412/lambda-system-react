@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSaleDetail } from '../../utils/api';
 import { Stats } from '../Stats';
 import { DetailHeader, Section, ProductsTable } from '../../components';
+import { AppContext } from '../../context';
 
 function SaleDetail() {
   const urlParams = useParams();
@@ -12,8 +13,11 @@ function SaleDetail() {
     product: [],
   });
 
+  const { token } = useContext(AppContext);
+
   useEffect(async () => {
-    const { data } = await getSaleDetail(urlParams);
+    const { id } = urlParams;
+    const { data } = await getSaleDetail({ id, token });
     setSale(data);
   }, []);
 

@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 import { Stats } from '../Stats';
 import { SalesCard, Section } from '../../components';
 import { AppContext } from '../../context';
 
 function Sales() {
   const { sales, loading } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const handleAdd = () => {
+    navigate('/sales/create');
+  };
 
   return (
     <Section>
@@ -22,6 +28,7 @@ function Sales() {
             />
           </Link>
         ))}
+      <Button onClick={handleAdd}>Añadir venta</Button>
     </Section>
   );
 }

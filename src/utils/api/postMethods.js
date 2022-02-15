@@ -45,7 +45,7 @@ const createClient = async ({ formData, token }) => {
     method: 'POST',
     body: formData,
     headers: {
-      Authentication: `Token ${token}`,
+      Authorization: `Token ${token}`,
     },
   };
 
@@ -68,7 +68,7 @@ const createSale = async ({ sale, products, token }) => {
       body: JSON.stringify(sale),
       headers: {
         'Content-Type': 'application/json',
-        Authentication: `Token ${token}`,
+        Authorization: `Token ${token}`,
       },
     });
 
@@ -77,7 +77,7 @@ const createSale = async ({ sale, products, token }) => {
       body: JSON.stringify(products),
       headers: {
         'content-type': 'application/json',
-        Authentication: `Token ${token}`,
+        Authorization: `Token ${token}`,
       },
     });
 

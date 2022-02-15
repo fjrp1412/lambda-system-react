@@ -58,7 +58,7 @@ const getSalesmanList = async token => {
 
 const getSaleDetail = async ({ id, token }) => {
   try {
-    const request = await fetch(`${BASE_URL}sale/${id}`, {
+    const request = await fetch(`${BASE_URL}sale/${id}/`, {
       headers: {
         Authorization: `Token ${token}`,
       },

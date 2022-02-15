@@ -50,7 +50,7 @@ function AppProvider({ children }) {
       auth,
       setAuth,
     });
-  }, [sales, products, clients, salesmans, auth]);
+  }, [sales, products, clients, salesmans, openModal, auth]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

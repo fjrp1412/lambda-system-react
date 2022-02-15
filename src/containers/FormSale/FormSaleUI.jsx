@@ -68,6 +68,7 @@ function FormSaleUI({
           />
           <IconButton
             onClick={() => {
+              console.log('a');
               setOpenModal(true);
             }}
           >

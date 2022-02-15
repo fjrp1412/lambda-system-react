@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context';
 import { FormSaleUI } from './FormSaleUI';
 import { createSale } from '../../utils/api';
@@ -23,6 +24,7 @@ function FormSale() {
     income: 0,
   });
   const [income, setIncome] = useState(0);
+  const navigate = useNavigate();
 
   const handleAddProduct = () => {
     setCart([
@@ -62,7 +64,11 @@ function FormSale() {
       };
     });
 
-    await createSale({ sale, products: newCart, token });
+    const request = await createSale({ sale, products: newCart, token });
+
+    if (request.ok) {
+      navigate('/sales');
+    }
   };
 
   useEffect(() => {
