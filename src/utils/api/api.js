@@ -44,85 +44,6 @@ const postSignUp = async formData => {
   }
 };
 
-const getSales = async token => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/sale/';
-
-  try {
-    const request = await fetch(url, {
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    });
-    const data = await request.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-    return e;
-  }
-};
-
-const getProductList = async token => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/product/';
-
-  try {
-    const request = await fetch(url, {
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    });
-    const data = await request.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-    return { e };
-  }
-};
-
-const getClientsList = async token => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
-  try {
-    const request = await fetch(url, {
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    });
-    const data = await request.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-    return { e };
-  }
-};
-
-const getSalesmanList = async token => {
-  const url = 'https://lambda-sales-system-api.herokuapp.com/api/salesman/';
-  try {
-    const request = await fetch(url, {
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    });
-    const data = await request.json();
-    return data;
-  } catch (e) {
-    console.log(e);
-    return { e };
-  }
-};
-
-const getSaleDetail = async ({ id }) => {
-  const url = `https://lambda-sales-system-api.herokuapp.com/api/sale/${id}/`;
-
-  try {
-    const request = await fetch(url);
-    const data = await request.json();
-    return { data, request };
-  } catch (e) {
-    console.log(e);
-    return { e };
-  }
-};
-
 const createClient = async form => {
   const url = 'https://lambda-sales-system-api.herokuapp.com/api/client/';
   const formData = new FormData(form);
@@ -170,14 +91,4 @@ const createSale = async (sale, products) => {
   }
 };
 
-export {
-  getSales,
-  getProductList,
-  getClientsList,
-  getSaleDetail,
-  createClient,
-  getSalesmanList,
-  createSale,
-  postLogin,
-  postSignUp,
-};
+export { createClient, createSale, postLogin, postSignUp };
